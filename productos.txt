@@ -1,0 +1,14 @@
+[
+  {
+    "title": "lata",
+    "price": 34,
+    "thumbnail": "otra direccion",
+    "id": 2
+  },
+  {
+    "title": "escuadra",
+    "price": 122,
+    "thumbnail": "otra direccion",
+    "id": 3
+  }
+]
