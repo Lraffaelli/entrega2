@@ -59,24 +59,30 @@ class Contenedor {
       let data = await fs.promises.readFile('./productos.txt', "utf-8");
 
       let productos = JSON.parse(data);
-
-      if(id===producto.id){
         const newProducto = productos.filter((producto) => producto.id !== id);
   
         await fs.promises.writeFile(this.nameFile,
           JSON.stringify(newProducto, null, 2)
         ); 
-        return this.getAll()      
-
-      }else{
-        return console.log(`El elemento con id ${id} no existe` )
-      }
-      
+           
     } catch (error) {
       console.log(`Error al leer el archivo: ${error}`);
     }
   }
+  async deleteAll(){
+    try {
+      const data = await fs.promises.writeFile(
+        this.nameFile,
+        JSON.stringify([], null, 2)
+      );
+      console.log(data);
+    } catch (error) {
+      console.log("Error de lectura", error);
+    }
+  }
+
 }
+
 
 const contenedor = new Contenedor("productos.txt");
 console.log(contenedor)
@@ -87,5 +93,7 @@ contenedor.save("escuadra", 122, "otra direccion");
 /* contenedor.writeFile();
 contenedor.getById(2);
 contenedor.getAll()  */
-contenedor.deleteById(1)
+//contenedor.deleteById(1)
+contenedor.deleteAll()
+contenedor.getAll()
 
